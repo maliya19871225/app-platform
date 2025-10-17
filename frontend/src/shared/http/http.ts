@@ -8,7 +8,7 @@ import axios from "axios";
 import i18n from "@/locale/i18n";
 import store from '@/store/store';
 import { Message } from '../utils/message';
-import { getCookie } from "@/shared/utils/common";
+import { getCookie, setCookie } from "@/shared/utils/common";
 import { ERROR_CODES } from './httpError'
 import { setLoginStatus, setNoAuth } from '@/store/chatStore/chatStore';
 import { getRefreshToken } from '@/shared/http/aipp';
@@ -21,6 +21,7 @@ let baseAxios = axios.create({
     }
   }
 });
+setCookie('access-token','eyJraWQiOiIyYmQ2ZWRlNC01Njk3LTQ5NzQtYjBiNy1hNTk2NzM2OWQzZGUiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJtMDA1NTg5NzUiLCJhdWQiOiJhcHAtcGxhdGZvcm0iLCJuYmYiOjE3NjA2ODI0MzksInNjb3BlIjpbInJlYWQiXSwiaXNzIjoiaHR0cHM6Ly9tb2RlbGVuZ2luZS1haS5uZXQvIiwiZXhwIjoxNzYwNzY4ODM5LCJpYXQiOjE3NjA2ODI0MzksImp0aSI6IjMwYTY4MmZiLTY3NDItNDRhYy1hNGI2LTM0MGJjZDAwMDZlZSJ9.Vcb-q5IxW4qVFC6mKC-dPqD4GkO7F3UikCgokvI-CAicWLYB7wbu73A09z_JdDuhkKdt_0cZ5ugj7cy2YQ7WzurGuSy2oFc_w8HKNFi4Ny4oVFuy0TL3ITjunMC1pMdfAwtWu6IVk9z3dG_QoFj666sWrQ3niNNixLt-v7ef1XkuXvCxXg04z1aGVF7aVE9kK2V0mFCRSPeniE8plWYhgnrzkOF7f7Gg2ZkqT-S9QLsAG7K0MG2dq8-zU9qtHoxW0r0jnLkfl5Q6pXEYQQwoEXc9Ht-uLucndz5WLJRMCrJyI5XoLK4o5TJB2cCS6VxGXnW5w7ZE0e7GnMfKs1s2AA');
 baseAxios.defaults.timeout = 100000;
 baseAxios.defaults.withCredentials = true;
 baseAxios.interceptors.request.use(
